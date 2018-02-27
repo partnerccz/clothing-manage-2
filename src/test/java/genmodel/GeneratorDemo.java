@@ -48,9 +48,10 @@ public class GeneratorDemo {
 		
 		// 创建生成器
 		DataSource dataSource = getDataSource();
-		Generator gernerator = new Generator(dataSource, baseModelPackageName, baseModelOutputDir, modelPackageName, modelOutputDir);		
+		Generator gernerator = new Generator(dataSource, baseModelPackageName, baseModelOutputDir, modelPackageName, modelOutputDir);
 //		MetaBuilder metaBuilder = new MyMetaBuilder(dataSource,"game_account", "game_8868", "game_money");
 //		gernerator.setMetaBuilder(metaBuilder);
+//		gernerator.setMetaBuilder(new MyMetaBuilder(dataSource,"test"));
 		// 设置数据库方言
 		gernerator.setDialect(new MysqlDialect());
 		// 添加不需要生成的表名

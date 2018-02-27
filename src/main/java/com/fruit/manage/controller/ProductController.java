@@ -27,7 +27,8 @@ public class ProductController extends BaseController {
 	}
 
 	@RequiresPermissions("product:edit")
-	public void setStatus(int status) {
+	public void setStatus() {
+		int status=getParaToInt("status");
 		Integer[] ids = getParaValuesToInt("ids");
 		log.info("修改商品("+ StringUtils.join(ids, ",") +")状态为:" + status);// TODO 获取当前登录用户
 		if(ids == null || ids.length == 0) {
@@ -42,7 +43,8 @@ public class ProductController extends BaseController {
 	}
 
 	@RequiresPermissions("product:edit")
-	public void info(Integer id) {
+	public void info() {
+        Integer id=getParaToInt("id");
 		if(id == null) {
 			renderErrorText("商品ID不能为null");
 			return;

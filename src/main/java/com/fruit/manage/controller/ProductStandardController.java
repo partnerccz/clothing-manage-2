@@ -12,7 +12,10 @@ import com.jfinal.kit.JsonKit;
 public class ProductStandardController extends BaseController {
 	private static Logger log = Logger.getLogger(ProductController.class);
 
-	public void getData(Integer productId, String prop, String order) {
+	public void getData() {
+		Integer productId=getParaToInt("productId");
+		String prop=getPara("prop");
+		String order=getPara("order");
 		if(productId == null) {
 			renderJson(new ArrayList<>());
 			return;
@@ -21,7 +24,9 @@ public class ProductStandardController extends BaseController {
 		renderJson(ProductStandard.dao.list(productId, prop, "descending".equals(order)));
 	}
 
-	public void changeStatus(int productId, int status) {
+	public void changeStatus() {
+		int productId=getParaToInt("productId");
+		int status=getParaToInt("status");
 		Integer[] ids = getParaValuesToInt("ids");
 		log.info("修改商品规格("+ StringUtils.join(ids, ",") +")状态为:" + status);// TODO 获取当前登录用户
 		if(ids == null || ids.length == 0) {
